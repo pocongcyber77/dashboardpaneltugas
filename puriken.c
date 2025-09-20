@@ -12,21 +12,20 @@ double orient(Point p, Point q, Point r) {
 }
 
 int on_segment(Point p, Point q, Point r) {
-    if (q.x + EPS < fmin(p.x, r.x) || q.x - EPS > fmax(p.x, r.x)) return 0;
-    if (q.y + EPS < fmin(p.y, r.y) || q.y - EPS > fmax(p.y, r.y)) return 0;
-    return 1;
+    return q.x + EPS >= fmin(p.x, r.x) && q.x - EPS <= fmax(p.x, r.x) &&
+           q.y + EPS >= fmin(p.y, r.y) && q.y - EPS <= fmax(p.y, r.y);
 }
 
 int same_point(Point a, Point b) {
-    return (fabs(a.x - b.x) < EPS && fabs(a.y - b.y) < EPS);
+    return fabs(a.x - b.x) < EPS && fabs(a.y - b.y) < EPS;
 }
 
 int main() {
     Point p1, q1, p2, q2;
-    scanf("%lf %lf", &p1.x, &p1.y);
-    scanf("%lf %lf", &q1.x, &q1.y);
-    scanf("%lf %lf", &p2.x, &p2.y);
-    scanf("%lf %lf", &q2.x, &q2.y);
+    if (scanf("%lf %lf", &p1.x, &p1.y) != 2) return 0;
+    if (scanf("%lf %lf", &q1.x, &q1.y) != 2) return 0;
+    if (scanf("%lf %lf", &p2.x, &p2.y) != 2) return 0;
+    if (scanf("%lf %lf", &q2.x, &q2.y) != 2) return 0;
 
     double o1 = orient(p1, q1, p2);
     double o2 = orient(p1, q1, q2);
