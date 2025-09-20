@@ -2,15 +2,20 @@
 int main(){
     int x;
     while(scanf("%d",&x)==1){
-        int kategori = x + 1;
-        if(kategori < 1) kategori = 1;
-        if(kategori > 40) kategori = 40;
+        int kategori;
+        if(x<=10) kategori = x+1;
+        else kategori = (x-10)+11;
+        if(kategori<1) kategori=1;
+        if(kategori>40) kategori=40;
+
         const char *title;
-        if(kategori <= 10) title = "Bocah Baik";
-        else if(kategori <= 20) title = "Gila Warnet";
-        else if(kategori <= 30) title = "Penunggu Warnet";
-        else title = "Hantu Warnet";
-        printf("Title Asep: '%s'\n", title);
+        if(kategori<=10) title="Bocah Baik";
+        else if(kategori<=20) title="Gila Warnet";
+        else if(kategori<=30) title="Penunggu Warnet";
+        else title="Hantu Warnet";
+
+        printf("Title Asep: '%s'\n",title);
+
         switch(kategori){
             case 1: printf("Wah bocah baru nih! Masih cupu banget dah!\n"); break;
             case 2: printf("Lumayan lah, udah mulai keliatan bakatnya dikit!\n"); break;
